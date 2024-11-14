@@ -1,0 +1,2 @@
+LABORATORIOS/Laboratorio5/chinesse_data.csv filter=lfs diff=lfs merge=lfs -text
+EXAMENES/Primer[[:space:]]Parcial/primer_parcial.ipynb filter=lfs diff=lfs merge=lfs -text
