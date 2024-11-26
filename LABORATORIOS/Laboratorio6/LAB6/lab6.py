@@ -6,16 +6,16 @@ import cv2
 from collections import defaultdict
 
 def discretizar(observation):
-    resized = cv2.resize(observation, (5, 5))
-    discretized = (resized / 255 * 5).astype(np.int32)
+    resized = cv2.resize(observation, (10, 10))
+    discretized = (resized / 255 * 10).astype(np.int32)
     return tuple(discretized.flatten())
 
 def train(episodes):
     # Parámetros de Q-learning
-    learning_rate = 0.3
-    discount_factor = 0.95
+    learning_rate = 0.15
+    discount_factor = 0.99
     epsilon = 1
-    epsilon_decay_rate = 0.01
+    epsilon_decay_rate = 0.005
     rng = np.random.default_rng()
     
     # Inicializar arrays y Q-table
@@ -61,7 +61,8 @@ def train(episodes):
             
             # Fórmula Q-learning
             new_value = old_value + learning_rate * (
-                reward + discount_factor * next_max - old_value
+                reward + discount_factor * next_max - old_value 
+                
             )
             q_table[state][action] = new_value
             
